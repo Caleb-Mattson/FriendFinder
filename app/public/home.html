@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Friend Finder!</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Make friends!</h1>
+            <hr>
+            <h3>Complete a short survey and get matched with a friend!
+                <br>It's as easy as that!
+                <br><br><a href="/survey"><button id="survey"><span>Let's make friends!</span></button></a>
+            </h3>
+        </div>
+    </div>
+
+    <style>
+        .jumbotron {
+            text-align: center;
+        }
+
+        #survey {
+            position: relative;
+            background: #31bb71;
+            padding: 0.5rem 1rem;
+            font-size: 1.8rem;
+            border: none;
+            color: white;
+            cursor: pointer;
+            outline: none;
+            overflow: hidden;
+            border-radius: 10%;
+        }
+
+        #survey span {
+            position: relative;
+        }
+
+        #survey::before {
+            --size: 0;
+            content: '';
+            position: absolute;
+            left: var(--x);
+            top: var(--y);
+            width: var(--size);
+            height: var(--size);
+            background: radial-gradient(circle closest-side, rgb(120, 36, 146), transparent);
+            transform: translate(-50%, -50%);
+            transition: width 0.2s ease, height 0.2s ease;
+        }
+
+        #survey:hover::before {
+            --size: 100px;
+        }
+    </style>
+
+    <script>
+        var btn = document.querySelector('#survey')
+        btn.onmousemove = function (e) {
+            var x = e.pageX - btn.offsetLeft - btn.offsetParent.offsetLeft
+            var y = e.pageY - btn.offsetTop - btn.offsetParent.offsetTop
+            btn.style.setProperty('--x', x + 'px')
+            btn.style.setProperty('--y', y + 'px')
+        }
+    </script>
+</body>
+
+</html>
